@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css'%} "/>
+
+
+  </head>
+  <body>
+
+<div>
+  <ul>
+    <li><a href="">Home</a></li>
+    <li><a href="./contact">Contact Us</a></li>
+    <li><a href="./about">About US</a></li>
+  </ul>
+</div>
+
+
+{% for result in jsonResponse %}
+<div class="container">
+<div class="app" style="height: 80px;">
+<div class="header" style="padding-top:10px ;">
+  <span class="team team-left">
+    <img src="{{result.team_home_badge}} "style="width: 20px;" />
+  <span class="name">{{ result.match_hometeam_name}}</span>
+  </span>
+  <span class="score">{{ result.match_hometeam_ft_score}} - {{result.match_awayteam_ft_score}}</span>
+  <span class="team team-right">
+    <img src="{{result.team_away_badge}}" style="width: 20px;" />
+  <span class="name">{{result.match_awayteam_name}}</span>
+  </span>
+
+<div style="clear: both;width: 100%; text-align:center; font: size 10px; margin-top: 80px">{{result.league_name}}</div>
+</div>
+
+{% endfor %}
+</div>
+   
+    
+  </body>
+</html>
